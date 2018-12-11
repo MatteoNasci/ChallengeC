@@ -27,6 +27,7 @@ TEST(load_image)
 	int res = SDL_QueryTexture(texture, &format, &access, &w, &h);
 	ASSERT_THAT(res == 0);
 	ASSERT_THAT(format == SDL_PIXELFORMAT_RGB24);
+	SDL_DestroyTexture(texture);
 }
 TEST(load_invalid_image)
 {

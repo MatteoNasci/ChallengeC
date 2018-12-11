@@ -3,34 +3,17 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <SDL.h>
 #include "gfx.h"
-#define WINDOW_W 400
-#define WINDOW_H 400
 static SDL_Window *window;
 static SDL_Renderer *renderer;
-TEST(load_image)
+TEST(valid_texture)
 {
-	int x, y, n;
-	ASSERT_THAT(renderer != NULL);
-	SDL_Texture *texture = load_image_on_texture("unicorno.png", renderer, &x, &y, &n);
+	SDL_Texture *texture = get_colored_texture(renderer, 768, 768);
 	ASSERT_THAT(texture != NULL);
-	Uint32 format;
-	int access, w, h;
-	int res = SDL_QueryTexture(texture, &format, &access, &w, &h);
-	ASSERT_THAT(res == 0);
-	ASSERT_THAT(format == SDL_PIXELFORMAT_RGB24);
-    SDL_DestroyTexture(texture);
-
+	SDL_DestroyTexture(texture);
 }
-TEST(load_invalid_image)
+TEST(invalid_texture)
 {
-	int x, y, n;
-	SDL_Texture *texture = load_image_on_texture("gfx.h", renderer, &x, &y, &n);
-	ASSERT_THAT(texture == NULL);
-}
-TEST(load_invalid_path_image)
-{
-	int x, y, n;
-	SDL_Texture *texture = load_image_on_texture("unicorno.h", renderer, &x, &y, &n);
+	SDL_Texture *texture = get_colored_texture(renderer, -768, 768);
 	ASSERT_THAT(texture == NULL);
 }
 
@@ -44,7 +27,7 @@ int main(int argc, char **argv)
 		goto cleanup;
 	}
 
-	window = SDL_CreateWindow("Image_Loader", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOW_W, WINDOW_H, 0);
+	window = SDL_CreateWindow("Image_Loader", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 768, 768, 0);
 	if (!window)
 	{
 		SDL_Log("Unable to initialize window: %s\n", SDL_GetError());
@@ -60,9 +43,8 @@ int main(int argc, char **argv)
 		goto cleanup_window;
 	}
 
-	RUN_TEST(load_image);
-	RUN_TEST(load_invalid_image);
-	RUN_TEST(load_invalid_path_image);
+	RUN_TEST(valid_texture);
+	RUN_TEST(invalid_texture);
 
 	PRINT_TEST_RESULTS();
 
