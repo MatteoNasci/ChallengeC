@@ -1,5 +1,4 @@
 CC=clang
-CPPCHECK=cppcheck.exe
 CFLAGS=-Wall -Werror -Wno-pragma-pack -O3 -ID:\source\repos\C\SDL2-devel-2.0.9-VC\SDL2-2.0.9\include
 LDFLAGS=-lSDL2 -L.
 BINARY=clock

@@ -5,6 +5,8 @@
 #include "stb_image.h"
 #define WINDOW_W 960
 #define WINDOW_H 540
+#define MS_IN_SECOND 1000
+#include "timer.h"
 
 int main(int argc, char **argv)
 {
@@ -33,31 +35,40 @@ int main(int argc, char **argv)
         goto cleanup_window;
     }
 
-    if (argc <= 1)
+    if (argc <= 2)
     {
-        SDL_Log("Unable to find path.");
+        SDL_Log("Invalid input, requires both file path and value in seconds.");
         ret_value = -1;
         goto cleanup_renderer;
     }
 
-    register int i;
-    char *path;
-    for (i = 1; i < argc; i++)
+    char *path = argv[1];
+    int milliseconds_before_shutdown = atoi(argv[2]) * MS_IN_SECOND;
+
+    if (milliseconds_before_shutdown <= 0)
     {
-        path = argv[i];
+        SDL_Log("Invalid input, seconds value must be positive.");
+        ret_value = -1;
+        goto cleanup_renderer;
     }
+
     int x, y, n;
 
     SDL_Texture *texture = load_image_on_texture(path, renderer, &x, &y, &n);
-    if(!texture)
+    if (!texture)
     {
         SDL_Log("Unable to load image from path %s.\n", path);
         ret_value = -1;
         goto cleanup_renderer;
     }
 
+    Uint32 last_ticks = SDL_GetTicks();
     for (;;)
     {
+        if(is_timer_over(SDL_GetTicks(),last_ticks,milliseconds_before_shutdown))
+        {
+            goto cleanup_texture;
+        }
         SDL_Event event;
         while (SDL_PollEvent(&event))
         {
