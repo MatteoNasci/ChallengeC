@@ -1,10 +1,10 @@
 #define SDL_MAIN_HANDLED
 #include <SDL.h>
+#include "gfx.h"
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 #define WINDOW_W 960
 #define WINDOW_H 540
-#include "gfx.h"
 
 int main(int argc, char **argv)
 {

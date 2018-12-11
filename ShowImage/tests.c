@@ -1,8 +1,8 @@
 #include "aiv_unit_test.h"
 #define SDL_MAIN_HANDLED
 #define STB_IMAGE_IMPLEMENTATION
-#include "gfx.h"
 #include <SDL.h>
+#include "gfx.h"
 #define WINDOW_W 400
 #define WINDOW_H 400
 static SDL_Window *window;
