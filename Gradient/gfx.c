@@ -31,7 +31,7 @@ SDL_Texture *get_colored_texture(SDL_Renderer *renderer, int x, int y)
     unsigned char value;
     for (i = 0; i < size; i ++)
     {
-        h = i / pitch;
+        h = i / pitch * 3;
         w = i % pitch;
 
         value = (unsigned char)((float)MAX_BYTE_2 * h / pitch + (float)MAX_BYTE_2 * w / pitch);
