@@ -11,15 +11,13 @@ TEST(load_image)
 {
 	int x, y, n;
 	ASSERT_THAT(renderer != NULL);
-	SDL_Texture *texture = load_image_on_texture("unicorn.png", renderer, &x, &y, &n);
+	SDL_Texture *texture = load_image_on_texture("unicorno.png", renderer, &x, &y, &n);
 	ASSERT_THAT(texture != NULL);
 	Uint32 format;
 	int access, w, h;
 	int res = SDL_QueryTexture(texture, &format, &access, &w, &h);
 	ASSERT_THAT(res == 0);
 	ASSERT_THAT(format == SDL_PIXELFORMAT_RGB24);
-	ASSERT_THAT(w == WINDOW_W);
-	ASSERT_THAT(h == WINDOW_H);
 }
 TEST(load_invalid_image)
 {
@@ -30,7 +28,7 @@ TEST(load_invalid_image)
 TEST(load_invalid_path_image)
 {
 	int x, y, n;
-	SDL_Texture *texture = load_image_on_texture("unicorn.h", renderer, &x, &y, &n);
+	SDL_Texture *texture = load_image_on_texture("unicorno.h", renderer, &x, &y, &n);
 	ASSERT_THAT(texture == NULL);
 }
 
