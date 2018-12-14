@@ -1,0 +1,1 @@
+char *ignore_first_char(char *const str);
