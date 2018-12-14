@@ -13,7 +13,10 @@ int main(int argc, char **argv)
     while (*(++argv))
     {
         char *to_print = ignore_first_char(*argv);
-        printf("%s\n", to_print);
+        if (to_print)
+        {
+            printf("%s\n", to_print);
+        }
     }
 
     return 0;
