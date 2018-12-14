@@ -37,11 +37,7 @@ SDL_Texture *get_colored_texture(SDL_Renderer *renderer, int x, int y)
         w = i % pitch;
 
         value = (unsigned char)((float)MAX_BYTE_2 * h / pitch + (float)MAX_BYTE_2 * w / pitch);
-        register int j;
-        for (j = 0; j < bytes_per_pixel; j++)
-        {
-            pixel[i + j] = value;
-        }
+        SDL_memset(pixel + i, value, bytes_per_pixel);
     }
 
     // relase the texture
