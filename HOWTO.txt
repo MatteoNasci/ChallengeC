@@ -1,1 +1,2 @@
-Inserire path a folder con gli include di SDL nei makefile (sostituire quello gia presente in -I(path))
+Inserire path a folder con gli include di SDL nei makefile (sostituire quello gia presente in -I(path)).
+Inserire path a eseguibile cppcheck nei makefile (sostituire quello gia presente in CPPCHECK = (path)).

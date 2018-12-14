@@ -21,7 +21,9 @@ SDL_Texture *get_colored_texture(SDL_Renderer *renderer, int x, int y)
         return NULL;
     }
 
-    const size_t size = x * y * 3;
+    const int bytes_per_pixel = pitch / x;
+
+    const size_t size = x * y * bytes_per_pixel;
     SDL_memset(pixel, 0, size);
 
     // put texture data into pixels. The third parameter is the number of byte of the image
@@ -29,13 +31,17 @@ SDL_Texture *get_colored_texture(SDL_Renderer *renderer, int x, int y)
     int h;
     int w;
     unsigned char value;
-    for (i = 0; i < size; i ++)
+    for (i = 0; (i + (bytes_per_pixel - 1)) < size; i += bytes_per_pixel)
     {
-        h = i / pitch * 3;
+        h = i / pitch * bytes_per_pixel;
         w = i % pitch;
 
         value = (unsigned char)((float)MAX_BYTE_2 * h / pitch + (float)MAX_BYTE_2 * w / pitch);
-        pixel[i] = value;
+        register int j;
+        for (j = 0; j < bytes_per_pixel; j++)
+        {
+            pixel[i + j] = value;
+        }
     }
 
     // relase the texture

@@ -1,0 +1,20 @@
+Sfide: 
+- realizzare un programma che prenda come argomento il percorso a un file immagine. L’immagine deve essere capovolta e salvata come sequence grezza RGB in un file (attraverso fopen/fwrite/fclose) [5 punti] 
+- realizzare un programma che prende un argomento e lo stampa al contrario (dall’ultima lettera alla prima) [1 punto] 
+- realizzare un programma con libui con un pulsante a un' area di testo multilinea. Cliccando sul pulsante si apre il file manager (uiOpenFile) che apre un file di test e ne mostra il contenuto nell’area di testo multilinea [20 punti] 
+- realizzare un programma che senza l’ausilio di librerie esterne fa il parsing di un file WAV (passato come argomento) stampandone il numero di canali e la frequenza [5 punti] 
+- realizzare un programma che senza l’ausilio di librerie esterne fa il parsing di un file BMP (passato come argomento) mostrandone larghezza e altezza [5 punti] 
+- realizzare un programma che prende un numero indefinito di argomento e li stampa tutti senza la prima lettera [2 punti] 
+- realizzare un programma che scrive 10 float (qualsiasi valore) in un file (in binario non testo !) su disco se non riceve argomenti, e che apre un file (se passato come argomento) stampandone i float salvati nell’esecuzione precedente. Il sistema deve essere robusto e non crashare se viene passato un file non valido (che non contiene quindi sizeof(float) * 10) [3 punti] 
+
+Bonus: 
+- ogni esercizio correlato di unit test sensati (con aiv_unit_test.h) raddoppia il punteggio 
+- ogni esercizio potra’ avere fino a 3 punti extra in base allo stile con cui e’ scritto (quindi si premieranno sia analisi che organizzazione del codice) 
+- 1 punto extra per esercizio se i commit hanno descrizioni utili. 
+- fino a 3 punti extra se il programma resiste a tentativi di farlo crashare.
+
+Done:
+- realizzare un programma con SDL che disegna un orologio analogico con solo la lancetta dei secondi (non serve il contorno dell’orologio, basta la lancetta), che fa il giro completo di un minuto [20 punti] -done
+- realizzare un programma con SDL che fa un gradiente in scala di grigio dal nero al bianco per tutte e 256 le gradazioni su un finestra di 768 pixel [10 punti] -done
+- realizzare un programma che prende come argomento il path a una immagine e lo visualizza con SDL [8 punti] -done
+- realizzare un programma che prende il percorso a una immagine come primo argomento e il numero di secondi dopo il quale sara’ chiuso il programma come secondo argomento. Il programma deve visualizzare l’immagine con SDL [10 punti] -done
