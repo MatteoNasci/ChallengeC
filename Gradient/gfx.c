@@ -1,5 +1,5 @@
 #include "gfx.h"
-SDL_Texture *get_colored_texture(SDL_Renderer *renderer, int x, int y)
+SDL_Texture *get_colored_texture(SDL_Renderer *const renderer, const int x, const int y)
 {
     // transfer image data into texture
     unsigned char *pixel;

@@ -1,5 +1,5 @@
 #include "gfx.h"
-SDL_Texture *load_image_on_texture(char *filename, SDL_Renderer *renderer, int *x, int *y, int *n)
+SDL_Texture *load_image_on_texture(const char *const filename, SDL_Renderer *const renderer, int *const x, int *const y, int *const n)
 {
     unsigned char *data = stbi_load(filename, x, y, n, 0);
     if (data == NULL)
